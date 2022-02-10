@@ -18,7 +18,7 @@ function Chatheader() {
         setIsPress(!isPress)
     }
 
-    function disconect(pageNumber) {
+    function leftChat(pageNumber) {
         dispatch({ type: 'SELECTPAGE', payload: pageNumber })
     }
 
@@ -27,7 +27,7 @@ function Chatheader() {
             <View style={styles.header}>
 
                 <TouchableHighlight
-                    onPress={() => disconect(1)}
+                    onPress={() => leftChat(1)}
                     underlayColor={COLORS.UILayer}>
                     <EndChat height={20} width={20} color={COLORS.red} />
                 </TouchableHighlight>

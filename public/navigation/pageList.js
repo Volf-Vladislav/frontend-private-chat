@@ -1,6 +1,6 @@
 export const pages = {
     filter: 1,
-    chat: 2,
-    search: 3,
+    search: 2,
+    chat: 3,
     ban: 4
 }
