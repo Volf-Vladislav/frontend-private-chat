@@ -30,7 +30,6 @@ export const styles = StyleSheet.create({
         paddingBottom: 10,
         paddingLeft: 20,
         paddingRight: 20,
-        maxWidth: '60%',
-        opacity: 0.9
+        maxWidth: '60%'
     },
 })

@@ -6,9 +6,10 @@ function Report(props) {
         <Svg
             width={props.width}
             height={props.height}
-            viewBox='0 0 48 48'
-            fill='#805dab'
+            fill={props.color}
+
             xmlns="http://www.w3.org/2000/svg"
+            viewBox='0 0 48 48'
         >
             <Path
                 fillRule="evenodd"

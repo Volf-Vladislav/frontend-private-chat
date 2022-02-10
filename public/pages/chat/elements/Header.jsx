@@ -1,21 +1,55 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, TouchableHighlight } from 'react-native'
+import { useDispatch } from 'react-redux'
+
+import EndChat from './../svg/EndChat'
+import Popup from './Popup'
+import UserStatusBar from './UserStatusBar'
+
+import { COLORS } from './../../../templates/styles/colors'
 import { styles } from '../style/header'
-import EndChat from './../svg/EndChat';
 
 function Chatheader() {
+    const dispatch = useDispatch()
+
+    const [isPress, setIsPress] = React.useState(false)
+
+    function showModal() {
+        setIsPress(!isPress)
+    }
+
+    function disconect(pageNumber) {
+        dispatch({ type: 'SELECTPAGE', payload: pageNumber })
+    }
+
     return (
-        <View style={styles.header}>
-            <View style={{flexDirection:'row'}}>
-                <EndChat color={'#ff6c60'}/>
+        <>
+            <View style={styles.header}>
+
+                <TouchableHighlight
+                    onPress={() => disconect(1)}
+                    underlayColor={COLORS.UILayer}>
+                    <EndChat height={20} width={20} color={COLORS.red} />
+                </TouchableHighlight>
+
+                <UserStatusBar />
+
+                <TouchableHighlight
+                    onPress={() => showModal()}
+                    underlayColor={COLORS.UILayer}>
+
+                    <View style={isPress ? styles.menuDotsPressed : styles.menuDots}>
+                        <View style={styles.dot}></View>
+                        <View style={styles.dot}></View>
+                        <View style={styles.dot}></View>
+                    </View>
+                </TouchableHighlight>
             </View>
 
-            <View style={styles.menuDots}>
-                <View style={styles.dot}></View>
-                <View style={styles.dot}></View>
-                <View style={styles.dot}></View>
-            </View>
-        </View>
+            {
+                isPress ? <Popup /> : <></>
+            }
+        </>
     )
 }
 

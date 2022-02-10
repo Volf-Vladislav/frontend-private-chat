@@ -1,8 +1,7 @@
 import React from 'react'
 import { StyleSheet, StatusBar, View } from 'react-native'
 
-import Navigation from './public/Navigation'
-
+import Navigation from './public/navigation/Navigation'
 
 export default function App() {
   return (

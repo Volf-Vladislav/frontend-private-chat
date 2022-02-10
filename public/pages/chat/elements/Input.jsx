@@ -9,7 +9,7 @@ function Input() {
     return (
         <View style={styles.footer}>
             <View style={styles.textInput}>
-                <Smile height={20} width={20} color={COLORS.neon} />
+                <Smile height={20} width={20} color={COLORS.neonLight} />
                 <TextInput
                     style={styles.input}
                     value=''

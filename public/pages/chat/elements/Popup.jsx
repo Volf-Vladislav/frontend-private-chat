@@ -1,60 +1,38 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import { COLORS } from './../../../templates/styles/colors'
 
-import Report from './../svg/Report'
+import EndChat from './../svg/EndChat'
 import NextArrow from './../svg/NextArrow'
-import EndChat from './../svg/EndChat';
+import Report from './../svg/Report'
+
+import { styles } from '../style/popup'
 
 
 function Popup() {
+
+    const EndChatButton = () => (<EndChat height={19} width={19} color={COLORS.neonLight} />)
+    const NextArrowButton = () => (<NextArrow height={21} width={21} color={COLORS.neonLight} />)
+    const ReportButton = () => (<Report width={25} height={25} color={COLORS.neonLight} />)
+
     return (
         <View style={styles.container}>
-            <View style={styles.menuItem}>
-                <View style={{ marginRight: 22 }}>
-                    <EndChat color='#805dab'/>
-                </View>
-                <Text style={styles.text}>Закончить беседу</Text>
-            </View>
-
-            <View style={styles.menuItem}>
-                <View style={{ marginRight: 20 }}>
-                    <NextArrow />
-                </View>
-                <Text style={styles.text}>Следующая беседа</Text>
-            </View>
-
-            <View style={styles.menuItem}>
-                <View style={{ marginRight: 15 }}>
-                    <Report width={25} height={25} color={COLORS.defaultText} />
-                </View>
-                <Text style={styles.text}>Пожаловаться</Text>
-            </View>
+            <MenuItem margin={21} icon={EndChatButton} text='Закончить беседу' />
+            <MenuItem margin={19} icon={NextArrowButton} text='Следующая беседа' />
+            <MenuItem margin={15} icon={ReportButton} text='Пожаловаться' />
         </View>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: COLORS.UILayer,
-        position: 'absolute',
-        zIndex: 999,
-        top: 56,
-        right: 10,
-        borderRadius: 10,
-        flexDirection: 'column',
-        padding: 20,
-        paddingBottom: 10
-    },
-    menuItem: {
-        marginBottom: 20,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    text: {
-        color: COLORS.defaultText,
-        fontSize: 16
-    }
-})
+function MenuItem(props) {
+    return (
+        <View style={styles.menuItem}>
+            <View style={{ marginRight: props.margin }}>
+                {props.icon && props.icon()}
+            </View>
+            <Text style={styles.text}>{props.text}</Text>
+        </View>
+    )
+}
 
 export default Popup
