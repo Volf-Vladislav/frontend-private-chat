@@ -2,11 +2,9 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import Filter from '../pages/filter/Filter'
-import Serach from './../pages/search/Serach'
-import Chat from '../pages/chat/Chat'
+import ChatController from '../pages/chatController/ChatController'
 
 import { pages } from './pageList'
-
 
 function RenderPages() {
     const page = useSelector(state => state.page)
@@ -18,7 +16,7 @@ function RenderPages() {
     }
     else if (page == pages.search) {
         return (
-            <Serach />
+            <ChatController />
         )
     }
     else if (page == pages.chat) {

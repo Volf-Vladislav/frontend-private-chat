@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 
 import { styles } from '../style/popup'
 import { COLORS } from './../../../templates/styles/colors'
+import { pages } from './../../../navigation/pageList'
 
 function MenuItem(props) {
 
@@ -11,10 +12,11 @@ function MenuItem(props) {
 
     function click(action) {
         if(action == 'left') {
-            dispatch({ type: 'SELECTPAGE', payload: 1 })
+            dispatch({ type: 'SELECTPAGE', payload: pages.filter })
         }
         else if(action == 'next') {
-            dispatch({ type: 'SELECTPAGE', payload: 2 })
+            dispatch(({ type: 'CHANGESTATUS', payload: false }))
+            dispatch({ type: 'SELECTPAGE', payload: pages.search })
         }
     }
 

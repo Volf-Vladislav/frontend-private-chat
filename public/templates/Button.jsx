@@ -8,7 +8,8 @@ function Button(props) {
             <Text style={{
                 color: props.fontColor,
                 fontSize: props.fontSize,
-                textTransform: 'uppercase'
+                textTransform: 'uppercase',
+                fontWeight: '400'
             }}>{props.text}</Text>
         </View>
     )

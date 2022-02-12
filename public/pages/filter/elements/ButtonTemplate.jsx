@@ -52,7 +52,7 @@ function Buttontemplate(props) {
                     returnColor(props.gender, props.genderType)
                 }
                 text={props.text}
-                fontSize={12}
+                fontSize={10}
                 fontColor='rgba(255, 255, 255, 0.7)' />
         </TouchableHighlight>
     )

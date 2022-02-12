@@ -5,12 +5,13 @@ export const styles = StyleSheet.create({
     content: {
         height: '100%',
         backgroundColor: COLORS.background,
-        padding: 10,
+        padding: 5,
         paddingTop: 40
     },
     nextPageButton: {
-        width: Dimensions.get('window').width - 20,
+        width: Dimensions.get('window').width - 10,
         position: 'absolute',
-        bottom: 20
+        bottom: 20,
+        left: 5
     }
 })

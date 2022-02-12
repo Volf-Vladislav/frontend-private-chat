@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         fontSize: 15,
         color: 'rgba(255, 255, 255, 0.77)',
         textTransform: 'uppercase',
-        fontWeight: 500
+        fontWeight: '500'
     },
     online: {
         flexDirection: 'row',
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     leftText: {
         color: COLORS.red,
         fontSize: 14,
-        fontWeight: 500,
+        fontWeight: '500',
     },
     printMessage: {
         flexDirection: 'row',

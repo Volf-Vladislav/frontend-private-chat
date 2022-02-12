@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
+import { useSelector } from 'react-redux'
 
 import Pencil from '../svg/Pencil'
 
@@ -11,10 +12,23 @@ function UserStatusBar() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Anonym</Text>
-
-            <OnlineStatus />
+            <ReturnStatus />
         </View>
     )
+}
+
+function ReturnStatus() {
+    const penPalStatus = useSelector(state => state.penPalStatus)
+
+    if (penPalStatus == 'online') {
+        return <OnlineStatus />
+    }
+    else if (penPalStatus == 'disconnected') {
+        return <LeftStatus />
+    }
+    else if (penPalStatus == 'print') {
+        return <PrintMessage />
+    }
 }
 
 function OnlineStatus() {

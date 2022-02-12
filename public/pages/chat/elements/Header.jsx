@@ -8,6 +8,7 @@ import UserStatusBar from './UserStatusBar'
 
 import { COLORS } from './../../../templates/styles/colors'
 import { styles } from '../style/header'
+import { pages } from './../../../navigation/pageList'
 
 function Chatheader() {
     const dispatch = useDispatch()
@@ -27,8 +28,9 @@ function Chatheader() {
             <View style={styles.header}>
 
                 <TouchableHighlight
-                    onPress={() => leftChat(1)}
+                    onPress={() => leftChat(pages.filter)}
                     underlayColor={COLORS.UILayer}>
+                        
                     <EndChat height={20} width={20} color={COLORS.red} />
                 </TouchableHighlight>
 

@@ -19,6 +19,17 @@ export const styles = StyleSheet.create({
     input: {
         marginLeft: 10,
         width: '80%',
-        fontSize: 16
+        fontSize: 16,
+        color: 'rgba(255, 255, 255, 0.84)',
+        height: 30,
+        lineHeight: 30
     },
+    sendButton: {
+        position: 'absolute',
+        right: 20,
+        width: 30,
+        height: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 })

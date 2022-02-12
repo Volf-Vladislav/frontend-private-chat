@@ -12,7 +12,6 @@ function Chat() {
 
             <ScrollView>
                 <Messages />
-                <Messages />
             </ScrollView>
 
             <Input />

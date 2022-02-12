@@ -6,7 +6,7 @@ import Navigation from './public/navigation/Navigation'
 export default function App() {
   return (
     <>
-      <StatusBar hidden={true} />
+      <StatusBar hidden={false} />
       <View style={styles.container}>
         <Navigation />
       </View>
