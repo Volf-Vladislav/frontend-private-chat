@@ -20,14 +20,15 @@ function UserStatusBar() {
 function ReturnStatus() {
     const penPalStatus = useSelector(state => state.penPalStatus)
 
-    if (penPalStatus == 'online') {
-        return <OnlineStatus />
-    }
-    else if (penPalStatus == 'disconnected') {
+
+    if (penPalStatus == 'disconnected') {
         return <LeftStatus />
     }
     else if (penPalStatus == 'print') {
         return <PrintMessage />
+    }
+    else {
+        return <OnlineStatus />
     }
 }
 
@@ -48,7 +49,7 @@ function LeftStatus() {
 function PrintMessage() {
     return (
         <View style={styles.printMessage}>
-            <Text style={{ color: COLORS.neonLight }}>печатает </Text>
+            <Text style={{ color: COLORS.neonLight, paddingLeft: 12 }}>online </Text>
             <View style={styles.pencil}>
                 <Pencil height={8} width={8} color={COLORS.neonLight} />
             </View>

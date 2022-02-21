@@ -15,8 +15,10 @@ function MenuItem(props) {
             dispatch({ type: 'SELECTPAGE', payload: pages.filter })
         }
         else if(action == 'next') {
-            dispatch(({ type: 'CHANGESTATUS', payload: false }))
-            dispatch({ type: 'SELECTPAGE', payload: pages.search })
+            dispatch({ type: 'SELECTPAGE', payload: pages.filter })
+            setTimeout(() => {
+                dispatch({ type: 'SELECTPAGE', payload: pages.search })
+            }, 0)
         }
     }
 

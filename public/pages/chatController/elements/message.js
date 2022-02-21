@@ -1,8 +1,7 @@
-export function message(data, userID, event) {
+export function message(data, event) {
     const msg = {
         data: data,
-        id: userID,
         event: event,
     }
-    return msg
+    return JSON.stringify(msg)
 }

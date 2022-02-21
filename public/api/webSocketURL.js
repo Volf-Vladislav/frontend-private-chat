@@ -1,0 +1,1 @@
+export const webSocketURL = 'wss://privatechatwss.herokuapp.com'

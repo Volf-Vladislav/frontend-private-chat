@@ -13,7 +13,6 @@ import { styles } from './style/search'
 
 function Serach() {
     const dispatch = useDispatch()
-    const penPalStatus = useSelector(state => state.penPalStatus)
 
     const [seconds, setSeconds] = useState(0)
     const [minute, setMinute] = useState(0)
@@ -21,16 +20,10 @@ function Serach() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setSeconds(seconds + 1)
-
-            if (penPalStatus == 'connected') setPage(pages.chat)
         }, 1000)
 
         return () => clearTimeout(timer)
     })
-
-    function setPage(page) {
-        dispatch({ type: 'SELECTPAGE', payload: page })
-    }
 
     return (
         <View style={styles.container}>
@@ -38,7 +31,6 @@ function Serach() {
                 <Loader size={80} color={COLORS.neonLight} />
                 <Text style={styles.title}>{getTime()}</Text>
             </View>
-
             <BackButton />
         </View>
     )

@@ -3,9 +3,8 @@ import { View, ScrollView } from 'react-native'
 
 import Header from './elements/Header'
 import Messages from './elements/Messages'
-import Input from './elements/Input'
 
-function Chat() {
+function Chat(props) {
     return (
         <View style={{ flex: 1, }}>
             <Header />
@@ -14,7 +13,7 @@ function Chat() {
                 <Messages />
             </ScrollView>
 
-            <Input />
+            {props.input && props.input()}
         </View>
     )
 }

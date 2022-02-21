@@ -6,7 +6,6 @@ import { styles } from '../style/messages'
 
 function Messages() {
     const messages = useSelector(state => state.messages)
-    const userID = useSelector(state => state.userID)
     
     if (messages != null) {
         return (
@@ -14,7 +13,7 @@ function Messages() {
                 if (element.message == null || element.message == '') {
                     return <View key={Math.random()}></View>
                 }
-                else if (element.id == userID) {
+                else if (element.position == 'right') {
                     return (
                         <View style={styles.rightMessage} key={Math.random()}>
                             <Text style={styles.rightMessageText}>{element.message}</Text>
