@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
-import { View, Text } from 'react-native'
-
-import Loader from './svg/Loader'
-
-import { COLORS } from './../../templates/styles/colors'
-import { pages } from './../../navigation/pageList'
+import { View, Text, Image } from 'react-native'
 
 import BackButton from './elements/BackButton'
 import { styles } from './style/search'
 
 function Serach() {
-    const dispatch = useDispatch()
-
     const [seconds, setSeconds] = useState(0)
     const [minute, setMinute] = useState(0)
 
@@ -28,7 +20,9 @@ function Serach() {
     return (
         <View style={styles.container}>
             <View style={styles.loadContainer}>
-                <Loader size={80} color={COLORS.neonLight} />
+                <Image
+                    style={{ width: 80, height: 80, transform: [{ rotate: '90deg' }] }}
+                    source={require('./svg/loader.gif')} />
                 <Text style={styles.title}>{getTime()}</Text>
             </View>
             <BackButton />
@@ -45,7 +39,7 @@ function Serach() {
     }
 
     function getMinutes() {
-        if (minute < 10)  return `0${minute}`
+        if (minute < 10) return `0${minute}`
         else return + minute
     }
 }

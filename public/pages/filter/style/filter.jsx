@@ -7,15 +7,17 @@ export const styles = StyleSheet.create({
     content: {
         height: '100%',
         backgroundColor: COLORS.background,
-        padding: 5,
+        padding: 10,
         paddingTop: 40,
-        width:  width>= 720 ? '50%' : '100%',
-        marginLeft: width >= 720 ? '25%' : 0
+        width:  width>= 720 ? '44%' : '100%',
+        marginLeft: width >= 720 ? '28%' : 0,
+        justifyContent: width >= 720 ? 'center' : 'flex-start',
     },
     nextPageButton: {
-        width: width >= 720 ? '100%' : width - 10,
-        position: 'absolute',
+        width: width >= 720 ? '100%' : width - 20,
+        position: width >= 720 ? 'relative' : 'absolute',
         bottom: 20,
-        left: 5
+        left:  width >= 720 ? 0 : 10,
+        marginTop: width >= 720 ? 20 : 0,
     }
 })

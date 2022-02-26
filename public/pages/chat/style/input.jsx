@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     footer: {
         height: 58,
         padding: 4,
+        backgroundColor: COLORS.background
     },
     textInput: {
         backgroundColor: COLORS.UILayer,

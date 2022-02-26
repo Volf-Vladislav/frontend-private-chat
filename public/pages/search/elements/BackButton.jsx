@@ -24,8 +24,8 @@ function BackButton() {
             <Button
                 color={COLORS.UILayer}
                 text='Отменить'
-                fontSize={13}
-                fontColor='rgba(255, 255, 255, 0.84)' />
+                fontSize={11}
+                fontColor='rgba(255, 255, 255, 0.74)' />
         </TouchableHighlight>
     )
 }

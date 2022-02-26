@@ -31,8 +31,8 @@ function Filter() {
                 <Button
                     color={COLORS.UILayer}
                     text='Найти собеседника'
-                    fontSize={12}
-                    fontColor='rgba(255, 255, 255, 0.84)' />
+                    fontSize={11}
+                    fontColor='rgba(255, 255, 255, 0.74)' />
             </TouchableHighlight>
         </View>
     )

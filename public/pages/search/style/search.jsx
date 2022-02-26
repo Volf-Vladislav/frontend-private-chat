@@ -1,27 +1,31 @@
 import { StyleSheet, Dimensions } from 'react-native'
+import { COLORS } from './../../../templates/styles/colors'
+
+const width = Dimensions.get('window').width
 
 export const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%'
     },
     loadContainer: {
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 53
     },
     title: {
-        color: 'rgba(255, 255, 255, 0.74)',
+        color: COLORS.neonLight,
         fontSize: 20,
         fontWeight: '500',
         marginTop: 10,
 
     },
     nextPageButton: {
-        width: Dimensions.get('window').width - 10,
+        width: width >= 720 ? '20%' : width - 20,
         position: 'absolute',
-        bottom: 20,
-        left: 5
+        bottom: width >= 720 ? 60 : 20,
+        left: width >= 720 ? '40%' : 10,
     }
 })

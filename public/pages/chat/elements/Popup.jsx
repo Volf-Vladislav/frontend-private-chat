@@ -19,7 +19,7 @@ function Popup() {
         <View style={styles.container}>
             <MenuItem margin={21} icon={EndChatButton} text='Закончить беседу' action='left'/>
             <MenuItem margin={19} icon={NextArrowButton} text='Следующая беседа' action='next' />
-            <MenuItem margin={15} icon={ReportButton} text='Пожаловаться' action='report' />
+            <MenuItem margin={15} icon={ReportButton} text='Отправить жалобу' action='report' />
         </View>
     )
 }

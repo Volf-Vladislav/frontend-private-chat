@@ -4,7 +4,9 @@ export const initialState = {
     penPalgender: 'any',
     penPalStatus: 'online',
     messages: [{}],
-    userID: Math.random()
+    userID: 'ip',
+    penPalID: '',
+    isBan: 'false',
 }
 
 export function rootReduсer(state = initialState, action) {
@@ -25,7 +27,16 @@ export function rootReduсer(state = initialState, action) {
     }
     else if (action.type == 'CHANGEPENPALSTATUS') {
         return { ...state, penPalStatus: action.payload }
-    }    
+    }
+    else if (action.type == 'SETID') {
+        return { ...state, penPalID: action.payload }
+    }
+    else if (action.type == 'SETUSERID') {
+        return { ...state, userID: action.payload }
+    }
+    else if (action.type == 'SETBAN') {
+        return { ...state, isBan: action.payload }
+    }
 
     else return state
 }

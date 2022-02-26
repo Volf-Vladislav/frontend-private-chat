@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     onlineText: {
         color: COLORS.neonLight
     },
-    leftText: {
+    redText: {
         color: COLORS.red,
         fontSize: 14,
         fontWeight: '500',

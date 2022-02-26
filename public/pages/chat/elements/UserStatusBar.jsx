@@ -20,12 +20,14 @@ function UserStatusBar() {
 function ReturnStatus() {
     const penPalStatus = useSelector(state => state.penPalStatus)
 
-
     if (penPalStatus == 'disconnected') {
         return <LeftStatus />
     }
     else if (penPalStatus == 'print') {
         return <PrintMessage />
+    }
+    else if (penPalStatus == 'report') {
+        return <ReportStatus />
     }
     else {
         return <OnlineStatus />
@@ -42,14 +44,20 @@ function OnlineStatus() {
 
 function LeftStatus() {
     return (
-        <Text style={styles.leftText}>покинул чат</Text>
+        <Text style={styles.redText}>покинул чат</Text>
+    )
+}
+
+function ReportStatus() {
+    return (
+        <Text style={styles.redText}>Жалоба отправлена</Text>
     )
 }
 
 function PrintMessage() {
     return (
         <View style={styles.printMessage}>
-            <Text style={{ color: COLORS.neonLight, paddingLeft: 12 }}>online </Text>
+            <Text style={{ color: COLORS.neonLight }}>Печатает </Text>
             <View style={styles.pencil}>
                 <Pencil height={8} width={8} color={COLORS.neonLight} />
             </View>

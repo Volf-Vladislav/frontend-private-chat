@@ -23,6 +23,8 @@ function ChatController() {
     const userGender = useSelector(state => state.userGender)
     const penPalgender = useSelector(state => state.penPalgender)
     const userID = useSelector(state => state.userID)
+    const penPalID = useSelector(state => state.penPalID)
+    const penPalStatus = useSelector(state => state.penPalStatus)
 
 
     useEffect(() => {
@@ -39,18 +41,35 @@ function ChatController() {
 
         socket.current.onmessage = (event) => {
             event = JSON.parse(event.data)
+
             if (event.event == 'status') {
                 setStatus(event.data)
+                console.log(event.data)
                 dispatch({ type: 'CHANGEPENPALSTATUS', payload: event.data })
+
+                if (event.id) {
+                    dispatch({ type: 'SETID', payload: event.id })
+                }
+
             }
             else if (event.event == 'message') {
                 dispatch({
                     type: 'CHANGEMESSAGES', payload: {
                         position: 'left',
+                        id: penPalID,
                         message: event.data
                     }
                 })
             }
+        }
+
+        socket.current.onerror = (err) => {
+            closeConnection()
+            console.log(err)
+        }
+
+        socket.current.onclose = () => {
+            closeConnection()
         }
 
         return () => {
@@ -61,6 +80,7 @@ function ChatController() {
 
     function closeConnection() {
         const readyState = socket.current.readyState
+        dispatch({ type: 'CHANGEPENPALSTATUS', payload: 'disconnected' })
 
         if (readyState == 3) {
             console.log('Соединение уже закрыто')
@@ -83,54 +103,79 @@ function ChatController() {
     }
 
     function Input() {
+        const [emoji, setEmoji] = useState(false)
         const [value, setValue] = useState('')
 
         function click() {
-            const readyState = socket.current.readyState
+            if (value != '') {
+                const readyState = socket.current.readyState
 
-            if (readyState == 3) {
-                console.log('Соединение уже закрыто')
+                if (readyState == 3) {
+                    console.log('Соединение уже закрыто')
+                }
+                else {
+                    dispatch({
+                        type: 'CHANGEMESSAGES', payload: {
+                            position: 'right',
+                            id: userID,
+                            message: value
+                        }
+                    })
+                    //socket.current.send(message({ status: 'endPrint' }, 'status'))
+                    const msg = value
+                    setValue('')
+                    socket.current.send(message(msg, 'message'))
+                }
             }
-            else {
-                socket.current.send(message(value, 'message'))
-
-                dispatch({
-                    type: 'CHANGEMESSAGES', payload: {
-                        position: 'right',
-                        message: value
-                    }
-                })
-            }
-            setValue('')
         }
+        function open() {
+            setEmoji(!emoji)
+        }
+
+
         return (
-            <View style={styles.footer}>
-                <View style={styles.textInput}>
-                    <Smile height={20} width={20} color={COLORS.neonLight} />
+            <>
+                <View style={styles.footer}>
 
-                    <TouchableHighlight
-                        onPress={() => {
-                            click(value)
-                        }}
-                        underlayColor={COLORS.UILayer}
-                        style={styles.sendButton}>
+                    <View style={styles.textInput}>
+                        <TouchableHighlight
+                            onPress={() => {
+                                open()
+                            }}
+                            underlayColor={COLORS.UILayer}>
 
-                        <SendMessage size={24} color={COLORS.neonLight} />
-                    </TouchableHighlight>
+                            <Smile height={20} width={20} color={COLORS.neonLight} />
+                        </TouchableHighlight>
 
-                    <TextInput
-                        style={styles.input}
-                        value={value}
-                        onChangeText={setValue}
-                        placeholder='Message'
-                        placeholderTextColor={COLORS.disabledText}
-                        keyboardAppearance='dark'
-                        onSubmitEditing={() => {
-                            click(value)
-                        }}
-                    />
+
+                        <TouchableHighlight
+                            onPress={() => {
+                                click(value)
+                            }}
+                            underlayColor={COLORS.UILayer}
+                            style={styles.sendButton}>
+
+                            <SendMessage size={24} color={COLORS.neonLight} />
+                        </TouchableHighlight>
+
+                        <TextInput
+                            style={styles.input}
+                            value={value}
+                            onChangeText={(text) => {
+                                setValue(text)
+                                //socket.current.send(message({ status: 'print' }, 'status'))
+                            }}
+
+                            placeholder='Message'
+                            placeholderTextColor={COLORS.disabledText}
+                            keyboardAppearance='dark'
+                            onSubmitEditing={() => {
+                                click(value)
+                            }}
+                        />
+                    </View>
                 </View>
-            </View>
+            </>
         )
     }
 }
